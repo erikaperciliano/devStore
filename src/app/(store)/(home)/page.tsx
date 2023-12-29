@@ -9,7 +9,7 @@ export default async function Home() {
 
         <div className="absolute bottom-28 right-28 h-12 flex items-center gap-2 max-w-[280px] rounded-full border-2 border-zinx-500 bg-black/60 p-1 pl-5">
           <span className="text-sm truncate">AI Side Sweatshirt</span>
-          <span className="flex h-full items-center justify-center rounded-full bg-violet-500 px-4 font-semibold">$80</span>
+          <span className="flex h-full items-center justify-center rounded-full bg-violet-700 px-4 font-semibold">$80</span>
         </div>
       </Link>
 
@@ -18,7 +18,7 @@ export default async function Home() {
 
         <div className="absolute bottom-10 right-28 h-12 flex items-center gap-2 max-w-[280px] rounded-full border-2 border-zinx-500 bg-black/60 p-1 pl-5">
           <span className="text-sm truncate">AI Side Sweatshirt</span>
-          <span className="flex h-full items-center justify-center rounded-full bg-violet-500 px-4 font-semibold">$80</span>
+          <span className="flex h-full items-center justify-center rounded-full bg-violet-700 px-4 font-semibold">$80</span>
         </div>
       </Link>
 
@@ -26,7 +26,7 @@ export default async function Home() {
         <Image src='/camiseta-dowhile-2022.png' className="group-hover:scale-105 transition-transform duration-500" width={860} height={920} quality={100} alt=""/>
         <div className="absolute bottom-10 right-28 h-12 flex items-center gap-2 max-w-[280px] rounded-full border-2 border-zinx-500 bg-black/60 p-1 pl-5">
           <span className="text-sm truncate">AI Side Sweatshirt</span>
-          <span className="flex h-full items-center justify-center rounded-full bg-violet-500 px-4 font-semibold">$80</span>
+          <span className="flex h-full items-center justify-center rounded-full bg-violet-700 px-4 font-semibold">$80</span>
         </div>
       </Link>
     </div>
