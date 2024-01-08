@@ -1,12 +1,33 @@
+import { api } from "@/data/api";
+import { Product } from "@/data/types/product";
 import Image from "next/image";
 
-export default function Slug(){
+interface ProductProps {
+  params: {
+    slug: string
+  }
+}
+
+async function getProduct(slug: string): Promise<Product>{
+  const response = await api(`/products/${slug}`, {
+    next: {
+      revalidate: 60 * 60 // each 1 hour this page will be update
+    }
+  })
+
+  const product = await response.json()
+
+  return product
+}
+
+export default async function ProductPage({ params }: ProductProps){
+  const product = await getProduct(params.slug)
   return(
     <div className="relative grid max-h-[860px] grid-cols-3">
       <div className="col-span-2 overflow-hidden">
         <Image
           className=""
-          src="/moletom-never-stop-learning.png"
+          src={product.image}
           alt=""
           width={1000}
           height={1000}
@@ -14,12 +35,12 @@ export default function Slug(){
       />
       </div>
       <div className="flex flex-col justify-center px-12">
-        <h1 className="text-3xl font-bold leading-tight">Never Stop Learning Sweatshirt</h1>
-        <p className="mt-2 leading-relaxed text-zinc-400">Sweatshirt made with 88% cotton and 12% polyester.</p>
+        <h1 className="text-3xl font-bold leading-tight">{product.title}</h1>
+        <p className="mt-2 leading-relaxed text-zinc-400">{product.description}</p>
 
         <div className="mt-8 flex items-center gap-3">
-          <span className="inline-block rounded-full bg-violet-700 px-5 py-2.5 font-semibold">$129</span>
-          <span className="text-sm text-zinc-400">In 12 interest-free installments of $10.75</span>
+          <span className="inline-block rounded-full bg-violet-700 px-5 py-2.5 font-semibold">{product.price.toLocaleString("en-US", {style:"currency", currency:"USD", minimumFractionDigits: 0, maximumFractionDigits: 0})}</span>
+          <span className="text-sm text-zinc-400">{(product.price / 12).toLocaleString("en-US", {style:"currency", currency:"USD"})}</span>
         </div>
 
         <div className="mt-8 space-y-4">
