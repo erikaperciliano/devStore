@@ -1,6 +1,6 @@
 'use client'
 
-import { ReactNode, createContext, useState } from "react";
+import { ReactNode, createContext, useContext, useState } from "react";
 
 interface CartItem {
   productId: string
@@ -41,3 +41,5 @@ export function CartProvider({ children }: {children: ReactNode }){
     </CartContext.Provider>
   )
 }
+
+export const useCart = () => useContext(CartContext)
