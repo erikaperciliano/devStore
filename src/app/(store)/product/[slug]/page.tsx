@@ -1,3 +1,4 @@
+import { AddToCartButton } from "@/components/add-to-cart-button";
 import { api } from "@/data/api";
 import { Product } from "@/data/types/product";
 import { Metadata } from "next";
@@ -59,7 +60,7 @@ export default async function ProductPage({ params }: ProductProps){
 
         <div className="mt-8 flex items-center gap-3">
           <span className="inline-block rounded-full bg-violet-700 px-5 py-2.5 font-semibold">{product.price.toLocaleString("en-US", {style:"currency", currency:"USD", minimumFractionDigits: 0, maximumFractionDigits: 0})}</span>
-          <span className="text-sm text-zinc-400">{(product.price / 12).toLocaleString("en-US", {style:"currency", currency:"USD"})}</span>
+          <span className="text-sm text-zinc-400">In up to 12 interest-free installments{' '} {(product.price / 12).toLocaleString("en-US", {style:"currency", currency:"USD"})}</span>
         </div>
 
         <div className="mt-8 space-y-4">
@@ -74,7 +75,7 @@ export default async function ProductPage({ params }: ProductProps){
           </div>
         </div>
 
-        <button type="button" className="mt-8 flex h-12 items-center justify-center rounded-full bg-emerald-600 font-semibold text-white">Add to Cart</button>
+        <AddToCartButton productId={product.id}/>
       </div>
     </div>
   )
